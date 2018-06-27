@@ -13,7 +13,13 @@ namespace GradeBook
             GradeBookClass book = new GradeBookClass();
             book.AddGrade(91);
             book.AddGrade(34.2f);
-            Console.ReadLine();
+            book.AddGrade(99f);
+            book.AddGrade(87f);
+            GradeStatistics stats = book.ComputeStatistics();
+
+            Console.WriteLine(stats.AverageGrade);
+            Console.WriteLine(stats.HighestGrade);
+            Console.WriteLine(stats.LowestGrade);
         }
     }
 }

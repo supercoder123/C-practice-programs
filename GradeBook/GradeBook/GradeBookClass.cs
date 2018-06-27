@@ -5,11 +5,36 @@ namespace GradeBook
 {
     class GradeBookClass
     {
-        public void AddGrade(float grade)
+        List<float> grades;
+
+        public GradeBookClass()
         {
-            grades.Add(grade);
+          grades =  new List<float>();
         }
 
-        List<float> grades = new List<float>();
+        public void AddGrade(float grade)
+        {
+            if(grade >= 0 || grade <= 100)
+            {
+                grades.Add(grade);
+
+            }
+        }
+
+        public GradeStatistics ComputeStatistics()
+        {
+            GradeStatistics stats =  new GradeStatistics();
+            float sum = 0f;
+            foreach (float d in grades)
+            {
+                sum += d;
+                stats.HighestGrade = Math.Max(d, stats.HighestGrade);
+                stats.LowestGrade = Math.Min(d, stats.LowestGrade);
+            }
+
+            stats.AverageGrade = sum / grades.Count;
+
+            return stats;
+        }
     }
 }
